@@ -22,8 +22,7 @@ Server::Server(std::string name, std::string ipAddr, int port) {
 			sockaddr_in serverAddr;
 			serverAddr.sin_family = AF_INET;
 			serverAddr.sin_port = htons(port);
-			//server.sin_addr.S_un.S_addr = INADDR_ANY;
-			inet_pton(AF_INET, ipAddr.c_str(), &serverAddr.sin_addr);
+			serverAddr.sin_addr.S_un.S_addr = INADDR_ANY;
 
 			//Bind socket to ip and port
 			bind(listenSocket, (sockaddr*)&serverAddr, sizeof(serverAddr));
